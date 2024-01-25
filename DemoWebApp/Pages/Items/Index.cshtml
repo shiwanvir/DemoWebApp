@@ -1,0 +1,42 @@
+﻿@page
+@model DemoWebApp.Pages.Items.IndexModel
+@{
+}
+<br>
+<h2>Product List</h2>
+<a class='btn btn-primary btn-sm' href='/Items/Create'>Create Item</a>
+
+<table class="table table-striped"> 
+  <thead>
+ <tr>
+   <th style="display:none">ID</th>
+   <th>Item Name</th>
+   <th>Item Code</th>
+   <th>Item Category</th>
+   <th>Item Description</th>
+   <th>Service Type</th>
+   <th>Created Date</th>
+   <th>Action</th>
+ </tr>
+  </thead>
+        <tbody>
+        @foreach (var item in Model.itemList)
+        {
+            <tr>
+                <td style="display:none">@item.id</td>
+                <td>@item.item_name</td>
+                <td>@item.item_code</td>
+                <td>@item.item_category</td>
+                <td>@item.item_description</td>
+                <td>@item.service_type</td>
+                <td>@item.created_at</td>
+                <td>
+                    <a class='btn btn-success btn-sm' href='/Items/Edit?id=@item.id'>Edit</a>
+                    <a class='btn btn-danger btn-sm' href='/Items/Delete?id=@item.id'>Delete</a>
+                </td>
+
+
+            </tr>
+        }
+        </tbody>
+</table>

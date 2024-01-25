@@ -1,0 +1,39 @@
+﻿@page
+@using System.Data.SqlClient
+@{
+
+	    string item_id =Request.Query["id"];
+
+            try {
+
+                //creating the connection string
+                string connectionString = "Data Source=localhost;Initial Catalog=demoWebApp;Integrated Security=True";
+
+                //innitiate sql connection
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string sqlQuarry = "DELETE FROM demo_items WHERE id =@id";
+                    using (SqlCommand cmd = new SqlCommand(sqlQuarry, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", item_id);
+
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+
+
+
+            }
+            catch (Exception ex) { 
+              return;
+            }
+             //redirect to the listing page
+            Response.Redirect("/Items/Index");
+         }
+
+          
+
+
+}

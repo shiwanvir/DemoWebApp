@@ -1,0 +1,70 @@
+﻿@page
+@model DemoWebApp.Pages.Items.CreateModel
+@{
+}
+<br>
+<h2>Add New Item</h2>
+@if (Model.errorMessage.Length>0)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="Close" ></button>
+    </div>
+}
+<form method="post">
+  <div class="container">
+  <div class="row justify-content-start">
+    <div class="col-6">
+     <label for="lblItemName">Item Name</label>
+      <input type="text" class="form-control" name="item_name" placeholder="Item Name" value="@Model.itemDetails.item_name" required>
+    </div>
+    <div class="col-6">
+     <label for="lblItemcode">Item Code</label>
+      <input type="text" class="form-control" name="item_code" placeholder="Item Code" value="@Model.itemDetails.item_code" required>
+    </div>
+  </div>
+    <div class="row justify-content-start">
+    <div class="col-6">
+        <label for="lblItemCategory">Item Category</label>
+       <select name="item_category" class="form-control" required>
+        <option selected value="">Choose</option>
+        <option>Device</option>
+        <option>Accessory</option>
+      </select>
+    </div>
+    <div class="col-6">
+       <label for="lblItemDescription">Item Description</label>
+      <input type="text" class="form-control" name="item_description" placeholder="Item Description" value="@Model.itemDetails.item_description" required>
+    </div>
+  </div>
+    <div class="row justify-content-start">
+    <div class="col-6">
+   <label for="lblItemCategory">Service type</label>
+       <select name="service_type" class="form-control" required>
+        <option selected value="">Choose</option>
+        <option>CAPEX</option>
+        <option>OPEX</option>
+      </select>
+    </div>
+    <div class="col-6">
+  
+    </div>
+  </div>
+  <br>
+  @if (Model.sucessMessage.Length>0)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role='alert'>
+        <strong>@Model.sucessMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="Close" ></button>
+    </div>
+}
+     <div class="row mb-3">
+    <div class="offset-sm-3 col-sm-3 d-grid">
+        <a  class="btn btn-secondary" href="/Items/Index">Cancel</a>
+    </div>
+    <div class="col-sm-3 d-grid">
+  <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</div>
+</form>
